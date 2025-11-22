@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  livekit:
+    image: livekit/livekit-server:latest
+    container_name: livekit
+    ports:
+      - "7880:7880"
+      - "7881:7881"
+    environment:
+      - LIVEKIT_KEYS=devkey:secret
+    restart: unless-stopped
+
+  agent:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: agent
+    env_file:
+      - backend/.env.local
+    # Ensure the agent talks to the LiveKit server by service name
+    environment:
+      - LIVEKIT_URL=ws://livekit:7880
+      - LIVEKIT_API_KEY=devkey
+      - LIVEKIT_API_SECRET=secret
+    depends_on:
+      - livekit
+    volumes:
+      - ./backend:/app:delegated
+    command: ["python", "src/agent.py"]
+    restart: unless-stopped
