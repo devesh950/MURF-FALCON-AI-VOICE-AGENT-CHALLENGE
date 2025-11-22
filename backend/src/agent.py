@@ -12,8 +12,8 @@ from livekit.agents import (
     cli,
     metrics,
     tokenize,
-    # function_tool,
-    # RunContext
+    function_tool,
+    RunContext,
 )
 from livekit.plugins import murf, silero, google, deepgram, noise_cancellation
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
@@ -26,11 +26,51 @@ load_dotenv(".env.local")
 class Assistant(Agent):
     def __init__(self) -> None:
         super().__init__(
-            instructions="""You are a helpful voice AI assistant. The user is interacting with you via voice, even if you perceive the conversation as text.
-            You eagerly assist users with their questions by providing information from your extensive knowledge.
-            Your responses are concise, to the point, and without any complex formatting or punctuation including emojis, asterisks, or other symbols.
-            You are curious, friendly, and have a sense of humor.""",
+            instructions="""You are a friendly coffee shop barista assistant for Brew & Beans Coffee.
+            Your job is to take voice orders and confirm them clearly. Maintain an order object with these exact fields: drinkType, size, milk, extras, name.
+            Ask clarifying questions until all fields are provided. Only accept concise answers from the user (single values or short lists).
+            When the order is complete, call the `save_order` tool with the final order (as a JSON object). Then tell the user the order was saved and repeat the order summary.
+
+            Behavior rules:
+            - Always confirm ambiguous answers (e.g., if size unclear, ask small/medium/large).
+            - For extras, accept a comma-separated list and normalize to an array of strings.
+            - Use polite, friendly language and keep messages short.
+            - Do NOT write files yourself; use the provided `save_order` tool to persist orders.
+
+            Example interaction:
+            User: "Hi, I'd like a large oat latte with caramel."
+            Agent: "What's your name for the order?"
+            User: "Alex."
+            Agent: "Got it — large oat latte with caramel for Alex. Anything else (extra shots, whipped cream)?"
+            User: "No."
+            Agent: "Thanks — saving your order now."
+            """,
         )
+
+    @function_tool
+    async def save_order(self, context: RunContext, order: dict):
+        """Save a completed order to `orders/` as a JSON file and return the filepath.
+
+        The LLM should call this tool with a dictionary matching the order state:
+        {"drinkType":"...","size":"...","milk":"...","extras":[...],"name":"..."}
+        """
+        from pathlib import Path
+        import json
+        from datetime import datetime
+
+        orders_dir = Path("orders")
+        orders_dir.mkdir(exist_ok=True)
+        ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+        safe_name = (order.get("name") or "anon").replace(" ", "_")
+        filename = orders_dir / f"order_{safe_name}_{ts}.json"
+        # Normalize extras
+        extras = order.get("extras") or []
+        if isinstance(extras, str):
+            extras = [e.strip() for e in extras.split(",") if e.strip()]
+        order["extras"] = extras
+        with open(filename, "w", encoding="utf-8") as fh:
+            json.dump(order, fh, indent=2, ensure_ascii=False)
+        return str(filename)
 
     # To add tools, use the @function_tool decorator.
     # Here's an example that adds a simple weather tool.
@@ -109,30 +149,14 @@ async def entrypoint(ctx: JobContext):
 
     async def log_usage():
         summary = usage_collector.get_summary()
-        logger.info(f"Usage: {summary}")
+        logger.info(f"Usage summary: {summary}")
 
-    ctx.add_shutdown_callback(log_usage)
-
-    # # Add a virtual avatar to the session, if desired
-    # # For other providers, see https://docs.livekit.io/agents/models/avatar/
-    # avatar = hedra.AvatarSession(
-    #   avatar_id="...",  # See https://docs.livekit.io/agents/models/avatar/plugins/hedra
-    # )
-    # # Start the avatar and wait for it to join
-    # await avatar.start(session, room=ctx.room)
-
-    # Start the session, which initializes the voice pipeline and warms up the models
-    await session.start(
-        agent=Assistant(),
-        room=ctx.room,
-        room_input_options=RoomInputOptions(
-            # For telephony applications, use `BVCTelephony` for best results
-            noise_cancellation=noise_cancellation.BVC(),
-        ),
-    )
-
-    # Join the room and connect to the user
+    # Connect to room and start session
     await ctx.connect()
+    await session.start(
+        Assistant(),
+        room=ctx.room
+    )
 
 
 if __name__ == "__main__":
