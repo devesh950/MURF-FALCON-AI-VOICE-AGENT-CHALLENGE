@@ -33,11 +33,7 @@ Completing the above is enough to finish Day 2.
 
 This part is **completely optional** and only for participants who want an extra challenge:
 
-- Build an **HTML-based beverage image generation system**.
-- The rendered HTML “drink image” should change according to the order. For example:
-  - If the order is **small**, show a small cup; if **large**, show a larger cup.
-  - If the drink has **whipped cream**, visualize it with a simple HTML shape on top of the cup.
-- Instead of the beverage image, you can also render an HTML order receipt.
+-
 
 #### Resources:
 - https://docs.livekit.io/home/client/data/text-streams/
@@ -51,3 +47,8 @@ This part is **completely optional** and only for participants who want an extra
 - Step 4: **Post the video on LinkedIn** with a description of what you did for the task on Day 2. Also, mention that you are building voice agent using the fastest TTS API - Murf Falcon. Mention that you are part of the **“Murf AI Voice Agent Challenge”** and don't forget to tag the official Murf AI handle. Also, use hashtags **#MurfAIVoiceAgentsChallenge** and **#10DaysofAIVoiceAgents**
 
 Once your agent is running and your LinkedIn post is live, you’ve completed Day 2.
+ Build an **HTML-based beverage image generation system**.
+- The rendered HTML “drink image” should change according to the order. For example:
+  - If the order is **small**, show a small cup; if **large**, show a larger cup.
+  - If the drink has **whipped cream**, visualize it with a simple HTML shape on top of the cup.
+- Instead of the beverage image, you can also render an HTML order receipt.

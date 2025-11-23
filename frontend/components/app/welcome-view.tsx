@@ -1,20 +1,33 @@
 import { Button } from '@/components/livekit/button';
+import { motion } from 'motion/react';
 
 function WelcomeImage() {
   return (
-    <svg
-      width="64"
-      height="64"
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="text-fg0 mb-4 size-16"
-    >
-      <path
-        d="M15 24V40C15 40.7957 14.6839 41.5587 14.1213 42.1213C13.5587 42.6839 12.7956 43 12 43C11.2044 43 10.4413 42.6839 9.87868 42.1213C9.31607 41.5587 9 40.7957 9 40V24C9 23.2044 9.31607 22.4413 9.87868 21.8787C10.4413 21.3161 11.2044 21 12 21C12.7956 21 13.5587 21.3161 14.1213 21.8787C14.6839 22.4413 15 23.2044 15 24ZM22 5C21.2044 5 20.4413 5.31607 19.8787 5.87868C19.3161 6.44129 19 7.20435 19 8V56C19 56.7957 19.3161 57.5587 19.8787 58.1213C20.4413 58.6839 21.2044 59 22 59C22.7956 59 23.5587 58.6839 24.1213 58.1213C24.6839 57.5587 25 56.7957 25 56V8C25 7.20435 24.6839 6.44129 24.1213 5.87868C23.5587 5.31607 22.7956 5 22 5ZM32 13C31.2044 13 30.4413 13.3161 29.8787 13.8787C29.3161 14.4413 29 15.2044 29 16V48C29 48.7957 29.3161 49.5587 29.8787 50.1213C30.4413 50.6839 31.2044 51 32 51C32.7956 51 33.5587 50.6839 34.1213 50.1213C34.6839 49.5587 35 48.7957 35 48V16C35 15.2044 34.6839 14.4413 34.1213 13.8787C33.5587 13.3161 32.7956 13 32 13ZM42 21C41.2043 21 40.4413 21.3161 39.8787 21.8787C39.3161 22.4413 39 23.2044 39 24V40C39 40.7957 39.3161 41.5587 39.8787 42.1213C40.4413 42.6839 41.2043 43 42 43C42.7957 43 43.5587 42.6839 44.1213 42.1213C44.6839 41.5587 45 40.7957 45 40V24C45 23.2044 44.6839 22.4413 44.1213 21.8787C43.5587 21.3161 42.7957 21 42 21ZM52 17C51.2043 17 50.4413 17.3161 49.8787 17.8787C49.3161 18.4413 49 19.2044 49 20V44C49 44.7957 49.3161 45.5587 49.8787 46.1213C50.4413 46.6839 51.2043 47 52 47C52.7957 47 53.5587 46.6839 54.1213 46.1213C54.6839 45.5587 55 44.7957 55 44V20C55 19.2044 54.6839 18.4413 54.1213 17.8787C53.5587 17.3161 52.7957 17 52 17Z"
-        fill="currentColor"
-      />
-    </svg>
+    <div className="mb-8 flex flex-col items-center">
+      {/* Wellness Heart Logo with glow effect */}
+      <div className="mb-6 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-purple-600 to-teal-500 shadow-2xl shadow-purple-400/50 ring-4 ring-white/50 dark:ring-purple-900/50 animate-pulse">
+        <svg viewBox="0 0 64 64" className="h-20 w-20 text-white drop-shadow-lg">
+          {/* Heart with wellness symbol */}
+          <path
+            d="M32 52c-1 0-2-1-2-1-8-8-16-16-16-24 0-6 4-10 10-10 3 0 6 2 8 4 2-2 5-4 8-4 6 0 10 4 10 10 0 8-8 16-16 24 0 0-1 1-2 1z"
+            fill="currentColor"
+          />
+          {/* Sparkle/wellness dots */}
+          <circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.8" />
+          <circle cx="44" cy="20" r="2" fill="currentColor" opacity="0.8" />
+          <circle cx="32" cy="12" r="2" fill="currentColor" opacity="0.8" />
+        </svg>
+      </div>
+      <h1 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-teal-500 dark:from-purple-400 dark:to-teal-400 mb-3 tracking-tight">
+        🌟 Wellness Companion
+      </h1>
+      <p className="text-base font-bold text-purple-600 dark:text-purple-300 flex items-center gap-2">
+        <span>Powered by</span>
+        <span className="rounded-full bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-1.5 text-white font-bold shadow-lg">
+          Murf AI Falcon 🚀
+        </span>
+      </p>
+    </div>
   );
 }
 
@@ -29,17 +42,126 @@ export const WelcomeView = ({
   ref,
 }: React.ComponentProps<'div'> & WelcomeViewProps) => {
   return (
-    <div ref={ref}>
-      <section className="bg-background flex flex-col items-center justify-center text-center">
+    <div ref={ref} className="relative min-h-screen">
+      {/* Beautiful Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-teal-50 to-indigo-100 dark:from-purple-950 dark:via-teal-950 dark:to-indigo-900">
+        {/* Animated gradient orbs - More vibrant */}
+        <div className="absolute top-20 left-20 w-[400px] h-[400px] bg-purple-400/35 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-teal-400/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-300/25 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-300/30 rounded-full blur-3xl animate-pulse delay-700"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-[450px] h-[450px] bg-teal-300/35 rounded-full blur-3xl animate-pulse delay-300"></div>
+      </div>
+
+      <section className="relative z-10 flex flex-col items-center justify-center text-center px-4 min-h-screen py-20">
         <WelcomeImage />
 
-        <p className="text-foreground max-w-prose pt-1 leading-6 font-medium">
-          Chat live with your voice AI agent
-        </p>
+        {/* Hero Text */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="max-w-3xl mb-12"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold text-purple-900 dark:text-purple-100 mb-4">
+            Your Personal Wellness Companion
+          </h2>
+          <p className="text-lg text-purple-700 dark:text-purple-300">
+            Start each day with intention • Track your progress • Build healthy habits
+          </p>
+        </motion.div>
 
-        <Button variant="primary" size="lg" onClick={onStartCall} className="mt-6 w-64 font-mono">
-          {startButtonText}
-        </Button>
+        {/* Feature Cards Grid */}
+        <div className="max-w-5xl w-full grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 rounded-2xl p-6 shadow-lg border border-purple-200/50 dark:border-purple-700/50 hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          >
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-3xl shadow-lg">
+              🌱
+            </div>
+            <h3 className="font-bold text-purple-900 dark:text-purple-100 mb-2">Mood Tracking</h3>
+            <p className="text-sm text-purple-700 dark:text-purple-300">Share feelings & emotions</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 rounded-2xl p-6 shadow-lg border border-teal-200/50 dark:border-teal-700/50 hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          >
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-3xl shadow-lg">
+              ⚡
+            </div>
+            <h3 className="font-bold text-teal-900 dark:text-teal-100 mb-2">Energy Levels</h3>
+            <p className="text-sm text-teal-700 dark:text-teal-300">Rate vitality 1-10</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 rounded-2xl p-6 shadow-lg border border-indigo-200/50 dark:border-indigo-700/50 hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          >
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center text-3xl shadow-lg">
+              🎯
+            </div>
+            <h3 className="font-bold text-indigo-900 dark:text-indigo-100 mb-2">Daily Goals</h3>
+            <p className="text-sm text-indigo-700 dark:text-indigo-300">Set 1-3 intentions</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 rounded-2xl p-6 shadow-lg border border-purple-200/50 dark:border-purple-700/50 hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          >
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-600 to-teal-500 flex items-center justify-center text-3xl shadow-lg">
+              💡
+            </div>
+            <h3 className="font-bold text-purple-900 dark:text-purple-100 mb-2">Smart Advice</h3>
+            <p className="text-sm text-purple-700 dark:text-purple-300">Practical guidance</p>
+          </motion.div>
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.8 }}
+          className="max-w-2xl w-full backdrop-blur-2xl bg-gradient-to-br from-white/80 via-purple-50/80 to-teal-50/80 dark:from-gray-900/80 dark:via-purple-900/40 dark:to-teal-900/40 rounded-3xl p-8 shadow-2xl border-2 border-purple-300/50 dark:border-purple-600/50"
+        >
+          <Button 
+            variant="primary" 
+            size="lg" 
+            onClick={onStartCall} 
+            className="w-full font-black text-2xl py-8 bg-gradient-to-r from-purple-600 via-purple-500 to-teal-500 hover:from-purple-700 hover:via-purple-600 hover:to-teal-600 shadow-2xl hover:shadow-[0_0_40px_rgba(168,85,247,0.5)] transform transition-all duration-500 hover:scale-105 hover:-translate-y-1 rounded-2xl relative overflow-hidden group"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-3">
+              <span className="text-3xl group-hover:scale-125 transition-transform duration-300">🌟</span>
+              <span>{startButtonText}</span>
+              <span className="text-3xl group-hover:scale-125 transition-transform duration-300">💜</span>
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+          </Button>
+          
+          <div className="mt-6 space-y-2 text-center">
+            <p className="text-sm text-purple-600 dark:text-purple-400 font-semibold flex items-center justify-center gap-2">
+              <span>🎙️</span>
+              <span>Voice-powered by Murf AI Falcon</span>
+              <span>⚡</span>
+            </p>
+            <p className="text-xs text-purple-500 dark:text-purple-500">
+              🔒 Privacy protected • ✨ Lightning-fast responses • 💾 Securely saved
+            </p>
+          </div>
+          
+          <p className="text-sm text-purple-600 dark:text-purple-400 mt-6 font-semibold">
+            #MurfAIVoiceAgentsChallenge | #10DaysofAIVoiceAgents
+          </p>
+        </motion.div>
       </section>
 
       <div className="fixed bottom-5 left-0 flex w-full items-center justify-center">

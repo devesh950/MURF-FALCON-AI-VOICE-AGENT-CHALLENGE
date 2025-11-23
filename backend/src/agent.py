@@ -26,51 +26,161 @@ load_dotenv(".env.local")
 class Assistant(Agent):
     def __init__(self) -> None:
         super().__init__(
-            instructions="""You are a friendly coffee shop barista assistant for Brew & Beans Coffee.
-            Your job is to take voice orders and confirm them clearly. Maintain an order object with these exact fields: drinkType, size, milk, extras, name.
-            Ask clarifying questions until all fields are provided. Only accept concise answers from the user (single values or short lists).
-            When the order is complete, call the `save_order` tool with the final order (as a JSON object). Then tell the user the order was saved and repeat the order summary.
+            instructions="""You are a supportive Health & Wellness Voice Companion - a caring, realistic, and grounded daily check-in assistant.
 
-            Behavior rules:
-            - Always confirm ambiguous answers (e.g., if size unclear, ask small/medium/large).
-            - For extras, accept a comma-separated list and normalize to an array of strings.
-            - Use polite, friendly language and keep messages short.
-            - Do NOT write files yourself; use the provided `save_order` tool to persist orders.
-
-            Example interaction:
-            User: "Hi, I'd like a large oat latte with caramel."
-            Agent: "What's your name for the order?"
-            User: "Alex."
-            Agent: "Got it — large oat latte with caramel for Alex. Anything else (extra shots, whipped cream)?"
-            User: "No."
-            Agent: "Thanks — saving your order now."
+            IMPORTANT BOUNDARIES:
+            - You are NOT a therapist, doctor, or medical professional
+            - You do NOT diagnose conditions or prescribe treatments
+            - You offer simple, practical lifestyle suggestions only
+            - If serious mental health concerns arise, gently suggest professional help
+            
+            Your job: Conduct daily wellness check-ins and save them to wellness_log.json using the save_wellness_checkin tool.
+            
+            Check-in structure (one question at a time):
+            1. Mood & Energy (required):
+               - "Hi! How are you feeling today?"
+               - "What's your energy level like right now?" (ask for 1-10 scale)
+               - Optional: "Anything on your mind or stressing you out?"
+            
+            2. Daily Intentions (required):
+               - "What are 1 to 3 things you'd like to get done today?"
+               - "Is there anything you want to do for yourself? Rest, exercise, a hobby?"
+            
+            3. Simple Advice (when appropriate):
+               - Break big goals into smaller steps
+               - Suggest: short walks, breaks, stretching, hydration
+               - Keep it practical: "Maybe try a 5-minute walk?" NOT medical advice
+            
+            4. Recap & Save (required):
+               - Summarize: mood, energy level, and objectives
+               - Ask: "Does this sound right?"
+               - Get their name
+               - Call save_wellness_checkin tool with: mood (text), energy (1-10), objectives (array), name (string)
+            
+            5. Reference Past Check-ins:
+               - If wellness_log.json exists with entries, briefly mention something:
+                 "Last time you mentioned [X]. How's that going?"
+               - Keep it natural and brief
+            
+            Conversation style:
+            - Warm and empathetic: "I hear you", "That makes sense"
+            - Brief: 1-2 sentences per turn
+            - Encouraging: "You've got this!", "One step at a time"
+            - Match their energy level
+            - Non-judgmental always
+            
+            Example:
+            You: "Hi there! How are you feeling today?"
+            User: "Pretty tired"
+            You: "I hear you. On a scale of 1 to 10, what's your energy level?"
+            User: "Maybe a 5"
+            You: "Got it. What's one thing you'd like to accomplish today?"
+            User: "Finish my report"
+            You: "That's a solid goal. Anything else or something just for you?"
+            User: "Maybe take a walk"
+            You: "I love that! So you're feeling tired, energy at 5 out of 10, and you want to finish the report and take a walk. Sound right?"
+            User: "Yes"
+            You: "Perfect! What's your name?"
+            User: "Jordan"
+            You: "Thanks Jordan! I've saved your check-in. Remember, one step at a time - you've got this!"
+            User: "No, that's all."
+            Agent: "Awesome! I've saved your order. One Venti oat milk latte with caramel for Alex. We'll have that ready for you soon!"
             """,
         )
 
     @function_tool
-    async def save_order(self, context: RunContext, order: dict):
-        """Save a completed order to `orders/` as a JSON file and return the filepath.
+    async def save_wellness_checkin(
+        self,
+        context: RunContext,
+        mood: str,
+        energy: int,
+        objectives: list,
+        name: str
+    ):
+        """Save a wellness check-in to wellness_log.json.
 
-        The LLM should call this tool with a dictionary matching the order state:
-        {"drinkType":"...","size":"...","milk":"...","extras":[...],"name":"..."}
+        Args:
+            mood: User's mood description (text like "tired", "good", "stressed")
+            energy: Energy level on 1-10 scale
+            objectives: List of 1-3 daily goals/intentions
+            name: User's name
+        
+        Returns:
+            Confirmation message with entry count
         """
         from pathlib import Path
         import json
         from datetime import datetime
 
-        orders_dir = Path("orders")
-        orders_dir.mkdir(exist_ok=True)
-        ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-        safe_name = (order.get("name") or "anon").replace(" ", "_")
-        filename = orders_dir / f"order_{safe_name}_{ts}.json"
-        # Normalize extras
-        extras = order.get("extras") or []
-        if isinstance(extras, str):
-            extras = [e.strip() for e in extras.split(",") if e.strip()]
-        order["extras"] = extras
-        with open(filename, "w", encoding="utf-8") as fh:
-            json.dump(order, fh, indent=2, ensure_ascii=False)
-        return str(filename)
+        log_file = Path("wellness_log.json")
+        
+        # Load existing log or create new
+        if log_file.exists():
+            with open(log_file, "r", encoding="utf-8") as fh:
+                log_data = json.load(fh)
+        else:
+            log_data = {"entries": []}
+        
+        # Create new entry
+        entry = {
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "date": datetime.utcnow().strftime("%Y-%m-%d"),
+            "name": name,
+            "mood": mood,
+            "energy_level": energy,
+            "objectives": objectives if isinstance(objectives, list) else [objectives],
+            "agent_summary": f"{name} feeling {mood}, energy {energy}/10, focusing on: {', '.join(objectives if isinstance(objectives, list) else [objectives])}"
+        }
+        
+        # Append and save
+        log_data["entries"].append(entry)
+        
+        with open(log_file, "w", encoding="utf-8") as fh:
+            json.dump(log_data, fh, indent=2, ensure_ascii=False)
+        
+        return f"Check-in saved successfully! This is entry #{len(log_data['entries'])} in your wellness log."
+    
+    @function_tool
+    async def get_previous_checkins(self, context: RunContext, days: int = 7):
+        """Retrieve previous wellness check-ins from the log.
+
+        Args:
+            days: Number of recent days to retrieve (default 7)
+        
+        Returns:
+            List of recent check-in summaries
+        """
+        from pathlib import Path
+        import json
+        from datetime import datetime, timedelta
+
+        log_file = Path("wellness_log.json")
+        
+        if not log_file.exists():
+            return "No previous check-ins found. This is your first time!"
+        
+        with open(log_file, "r", encoding="utf-8") as fh:
+            log_data = json.load(fh)
+        
+        entries = log_data.get("entries", [])
+        if not entries:
+            return "No previous check-ins found."
+        
+        # Get recent entries
+        cutoff_date = (datetime.utcnow() - timedelta(days=days)).strftime("%Y-%m-%d")
+        recent = [e for e in entries if e.get("date", "") >= cutoff_date]
+        
+        if not recent:
+            recent = entries[-3:]  # Last 3 if none in date range
+        
+        summaries = []
+        for e in recent[-5:]:  # Max 5 most recent
+            summaries.append(
+                f"{e.get('date')}: {e.get('name')} - {e.get('mood')}, "
+                f"energy {e.get('energy_level')}/10, goals: {', '.join(e.get('objectives', []))}"
+            )
+        
+        return "\n".join(summaries)
 
     # To add tools, use the @function_tool decorator.
     # Here's an example that adds a simple weather tool.
@@ -160,4 +270,8 @@ async def entrypoint(ctx: JobContext):
 
 
 if __name__ == "__main__":
-    cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint, prewarm_fnc=prewarm))
+    cli.run_app(WorkerOptions(
+        entrypoint_fnc=entrypoint,
+        prewarm_fnc=prewarm,
+        agent_name="Wellness Companion"
+    ))
