@@ -1,17 +1,22 @@
 import json
 import logging
-import os
 from pathlib import Path
-from typing import Annotated
 
-from livekit.agents import Agent, WorkerOptions, cli, llm
-from livekit.plugins import deepgram, google, murf, silero
+from livekit.agents import (
+    Agent,
+    AgentSession,
+    JobContext,
+    WorkerOptions,
+    cli,
+    function_tool,
+)
+from livekit.plugins import murf, google, deepgram
 
 logger = logging.getLogger("tutor-agent")
 logger.setLevel(logging.INFO)
 
 # Load tutor content from JSON file
-CONTENT_FILE = Path(__file__).parent.parent.parent / "shared-data" / "day4_tutor_content.json"
+CONTENT_FILE = Path(__file__).parent.parent / "day4_tutor_content.json"
 
 def load_tutor_content():
     """Load the tutor content from JSON file."""
@@ -133,28 +138,28 @@ Ready? Let's start learning!
         )
 
 
-async def entrypoint(ctx):
-    """Main entrypoint that starts with coordinator."""
+async def entrypoint(ctx: JobContext):
+    """Main entrypoint that starts the tutor agent."""
     
-    # Create STT (Speech-to-Text)
-    stt = deepgram.STT(model="nova-3")
-    
-    # Create LLM
-    google_llm = google.LLM(model="gemini-2.0-flash-exp")
-    
-    # Create TTS - Matthew voice for coordinator
-    tts = murf.TTS(voice="en-US-matthew")
-    
-    # Create coordinator agent with tutor content in context
+    # Add tutor content to agent context
     content_str = json.dumps(TUTOR_CONTENT, indent=2)
     coordinator = CoordinatorAgent()
-    coordinator.instructions += f"\n\nAvailable content:\n{content_str}"
+    full_instructions = coordinator.instructions + f"\n\nAvailable content:\n{content_str}"
+    
+    # Create agent session
+    session = AgentSession(
+        stt=deepgram.STT(model="nova-3"),
+        llm=google.LLM(model="gemini-2.0-flash-exp"),
+        tts=murf.TTS(voice="en-US-matthew"),
+    )
+    
+    # Set instructions
+    session.conversation.add_system_message(full_instructions)
     
     # Start session
-    session = await ctx.connect()
-    await session.start(coordinator, room=ctx.room)
+    await session.start(ctx.room, participant=ctx.room.local_participant)
     
-    logger.info("Tutor agent started - Coordinator ready")
+    logger.info("Day 4 Tutor agent started - Coordinator ready")
 
 
 if __name__ == "__main__":

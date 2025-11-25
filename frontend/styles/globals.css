@@ -5,14 +5,14 @@
 
 :root {
   --radius: 0.625rem;
-  /* Starbucks Green Theme */
+  /* Physics Wallah Purple Theme */
   --background: oklch(0.98 0.01 280);
-  --foreground: oklch(0.2 0.05 160);
+  --foreground: oklch(0.2 0.05 280);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.05 160);
+  --card-foreground: oklch(0.2 0.05 280);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.05 160);
-  --primary: oklch(0.35 0.15 160); /* Starbucks green */
+  --popover-foreground: oklch(0.2 0.05 280);
+  --primary: oklch(0.45 0.20 285); /* Physics Wallah purple */
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.92 0.02 150);
   --secondary-foreground: oklch(0.25 0.05 160);
@@ -40,14 +40,14 @@
 }
 
 .dark {
-  /* Starbucks Dark Theme */
-  --background: oklch(0.15 0.02 160);
-  --foreground: oklch(0.95 0.01 150);
-  --card: oklch(0.2 0.03 160);
-  --card-foreground: oklch(0.95 0.01 150);
-  --popover: oklch(0.22 0.03 160);
-  --popover-foreground: oklch(0.95 0.01 150);
-  --primary: oklch(0.45 0.18 160); /* Brighter green for dark mode */
+  /* Physics Wallah Dark Theme */
+  --background: oklch(0.15 0.02 280);
+  --foreground: oklch(0.95 0.01 280);
+  --card: oklch(0.2 0.03 280);
+  --card-foreground: oklch(0.95 0.01 280);
+  --popover: oklch(0.22 0.03 280);
+  --popover-foreground: oklch(0.95 0.01 280);
+  --primary: oklch(0.55 0.22 285); /* Brighter purple for dark mode */
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.25 0.03 160);
   --secondary-foreground: oklch(0.95 0.01 150);
