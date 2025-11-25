@@ -102,7 +102,7 @@ export const SessionView = ({
         <div className="absolute bottom-40 right-1/3 w-[450px] h-[450px] bg-teal-300/30 rounded-full blur-3xl animate-pulse delay-300"></div>
       </div>
 
-      {/* Enhanced Physics Wallah Header Banner */}
+      {/* Enhanced Wellness Header Banner */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -112,17 +112,17 @@ export const SessionView = ({
         <div className="flex items-center gap-4">
           <div className="relative">
             <div className="absolute inset-0 bg-purple-500/50 rounded-full blur-lg animate-pulse" />
-            <div className="relative h-12 w-12 rounded-full bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center shadow-lg">
-              <span className="text-white text-2xl animate-pulse">🎓</span>
+            <div className="relative h-12 w-12 rounded-full bg-gradient-to-br from-purple-600 via-purple-500 to-teal-500 flex items-center justify-center shadow-lg">
+              <span className="text-white text-2xl animate-pulse">🌟</span>
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-300 dark:to-purple-400">
-              Physics Wallah Tutor
+            <h2 className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-teal-600 dark:from-purple-300 dark:to-teal-300">
+              Wellness Companion
             </h2>
             <p className="text-xs text-purple-600 dark:text-purple-400 font-semibold flex items-center gap-1">
-              <span>📚</span>
-              <span>Live Learning Session</span>
+              <span>💜</span>
+              <span>Live Check-in Session</span>
               <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse ml-1" />
             </p>
           </div>
@@ -132,7 +132,7 @@ export const SessionView = ({
         </div>
       </motion.div>
 
-      {/* Enhanced Learning Info Card - Left side */}
+      {/* Enhanced Wellness Info Card - Left side */}
       <div className="absolute left-8 top-32 z-30 max-w-md">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -144,15 +144,15 @@ export const SessionView = ({
             <div className="flex items-center gap-3">
               <div className="relative">
                 <div className="absolute inset-0 bg-purple-500/50 rounded-2xl blur-md" />
-                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-3xl shadow-lg">
-                  📚
+                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-teal-500 flex items-center justify-center text-3xl shadow-lg">
+                  💜
                 </div>
               </div>
               <div>
                 <h3 className="text-2xl font-black text-purple-800 dark:text-purple-200">
-                  Learning Guide
+                  Check-in Guide
                 </h3>
-                <p className="text-xs text-purple-600 dark:text-purple-400 font-medium">Active Recall Method</p>
+                <p className="text-xs text-purple-600 dark:text-purple-400 font-medium">Follow the conversation flow</p>
               </div>
             </div>
           </div>

@@ -20,9 +20,9 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'Physics Wallah',
-  pageTitle: 'Physics Wallah Teach-the-Tutor | Active Recall Coach',
-  pageDescription: 'Master programming concepts through active learning with Physics Wallah powered by Murf AI',
+  companyName: 'Wellness Companion',
+  pageTitle: 'Health & Wellness Voice Companion | Daily Check-ins',
+  pageDescription: 'Your supportive daily wellness check-in assistant powered by Murf AI Falcon',
 
   supportsChatInput: true,
   supportsVideoInput: true,
@@ -30,12 +30,12 @@ export const APP_CONFIG_DEFAULTS: AppConfig = {
   isPreConnectBufferEnabled: true,
 
   logo: '/lk-logo.svg',
-  accent: '#7c3aed', // Physics Wallah purple
+  accent: '#5f259f', // PharmEasy purple
   logoDark: '/lk-logo-dark.svg',
-  accentDark: '#a78bfa', // Lighter purple for dark mode
-  startButtonText: '🎓 Start Learning',
+  accentDark: '#8b5cf6', // Lighter purple for dark mode
+  startButtonText: '🌟 Start Daily Check-in',
 
   // for LiveKit Cloud Sandbox
   sandboxId: undefined,
-  agentName: 'Physics Wallah Tutor',
+  agentName: 'Wellness Companion',
 };
