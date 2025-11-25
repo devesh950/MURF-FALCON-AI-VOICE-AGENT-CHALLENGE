@@ -1,0 +1,211 @@
+{
+  "company_info": {
+    "name": "PhonePe",
+    "tagline": "India's Leading Digital Payments Platform",
+    "description": "PhonePe is India's most trusted digital payments app with over 61+ crore registered users. We enable seamless UPI payments, bill payments, recharges, investments, insurance, and lending services.",
+    "founded": "2015",
+    "headquarters": "Bengaluru, India",
+    "parent_company": "PhonePe Private Limited"
+  },
+  "products": [
+    {
+      "name": "Payment Gateway",
+      "description": "Accept online payments for your business at ZERO cost. Supports UPI, cards, wallets, and net banking.",
+      "pricing": "FREE - 0% transaction fees",
+      "features": [
+        "Zero setup cost",
+        "Multiple payment methods",
+        "Instant settlements",
+        "Easy integration",
+        "Real-time analytics"
+      ],
+      "ideal_for": "E-commerce businesses, online merchants, startups"
+    },
+    {
+      "name": "UPI Payments",
+      "description": "Send and receive money instantly using UPI. Link your bank account and pay anyone seamlessly.",
+      "pricing": "FREE - No charges",
+      "features": [
+        "Instant money transfer",
+        "UPI Lite for faster small transactions",
+        "Credit Line on UPI",
+        "RuPay CC on UPI",
+        "Split expenses with friends"
+      ],
+      "ideal_for": "Individual users, merchants, everyone"
+    },
+    {
+      "name": "Offline Payments (QR & SmartSpeaker)",
+      "description": "Accept payments at your physical store with PhonePe QR codes and SmartSpeakers.",
+      "pricing": "FREE QR codes, SmartSpeaker available",
+      "features": [
+        "Instant payment notifications",
+        "Voice alerts with SmartSpeaker",
+        "4 days battery life",
+        "Real-time payment tracking",
+        "Works with all UPI apps"
+      ],
+      "ideal_for": "Retail stores, kirana shops, restaurants, small businesses"
+    },
+    {
+      "name": "Business Lending",
+      "description": "Get quick and flexible loans for your business growth.",
+      "pricing": "Competitive interest rates",
+      "features": [
+        "Quick approval",
+        "Minimal documentation",
+        "Flexible repayment",
+        "Digital process"
+      ],
+      "ideal_for": "Small and medium businesses, merchants"
+    },
+    {
+      "name": "PhonePe Ads",
+      "description": "Advertise your brand to millions of PhonePe users.",
+      "pricing": "Contact sales for pricing",
+      "features": [
+        "Reach 61+ crore users",
+        "Targeted advertising",
+        "Performance analytics",
+        "Multiple ad formats"
+      ],
+      "ideal_for": "Brands, advertisers, marketing agencies"
+    }
+  ],
+  "consumer_services": [
+    {
+      "name": "Recharge & Bill Payments",
+      "description": "Recharge mobile, DTH, FASTag, pay electricity, water, gas bills and more.",
+      "pricing": "FREE - No convenience fees"
+    },
+    {
+      "name": "Insurance",
+      "description": "Buy motor, health, life, travel, and personal accident insurance.",
+      "pricing": "Competitive premiums"
+    },
+    {
+      "name": "Investments",
+      "description": "Invest in mutual funds, liquid funds, tax-saving funds, equity and debt funds.",
+      "pricing": "Zero commission on direct funds"
+    },
+    {
+      "name": "Gold Investment",
+      "description": "Buy 24K pure gold digitally starting from just ₹5. Set up monthly Gold SIP from ₹100.",
+      "pricing": "Starting from ₹5"
+    },
+    {
+      "name": "Travel & Commute",
+      "description": "Book flights, buses, trains, hotels, and cabs. Recharge FASTag.",
+      "pricing": "Competitive rates"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What does PhonePe do?",
+      "answer": "PhonePe is India's leading digital payments platform offering UPI payments, bill payments, recharges, investments, insurance, lending, and business payment solutions. We serve over 61 crore registered users across India."
+    },
+    {
+      "question": "Is PhonePe free to use?",
+      "answer": "Yes! PhonePe is completely FREE for personal UPI payments, money transfers, recharges, and bill payments. For businesses, our Payment Gateway is also FREE with 0% transaction fees."
+    },
+    {
+      "question": "What is the Payment Gateway pricing?",
+      "answer": "PhonePe Payment Gateway is absolutely FREE with ZERO transaction fees. No setup cost, no monthly charges. You can accept payments via UPI, cards, wallets, and net banking at zero cost."
+    },
+    {
+      "question": "Who can use PhonePe for business?",
+      "answer": "Any business can use PhonePe! We support online businesses (e-commerce, apps, websites) with our Payment Gateway, and offline businesses (retail stores, restaurants, kirana shops) with QR codes and SmartSpeakers."
+    },
+    {
+      "question": "What is PhonePe SmartSpeaker?",
+      "answer": "PhonePe SmartSpeaker is a device for offline merchants that announces payments with voice alerts in real-time. It has up to 4 days battery life, smart replay features, and helps merchants track payments without checking their phones constantly."
+    },
+    {
+      "question": "How quickly do I get settlements?",
+      "answer": "For Payment Gateway, settlements are instant. For offline QR payments, settlements typically happen within T+1 business day to your linked bank account."
+    },
+    {
+      "question": "What payment methods does PhonePe support?",
+      "answer": "PhonePe supports all major payment methods: UPI, Credit/Debit Cards (Visa, Mastercard, RuPay), Net Banking, Wallets, UPI Lite, Credit Line on UPI, and RuPay Credit Card on UPI."
+    },
+    {
+      "question": "Is PhonePe safe and secure?",
+      "answer": "Absolutely! PhonePe uses bank-grade security with PCI-DSS certification and ISO compliance. All transactions are encrypted and protected. We have robust fraud detection systems to keep your money safe."
+    },
+    {
+      "question": "Can I use PhonePe internationally?",
+      "answer": "Yes! PhonePe International allows you to make UPI payments at select merchants in Singapore, UAE, Nepal, Sri Lanka, Bhutan, and Mauritius."
+    },
+    {
+      "question": "What is PhonePe's market reach?",
+      "answer": "PhonePe has 61+ crore registered users and is accepted at 4.4+ crore merchants across 98% of India's postal codes. One in three Indians uses PhonePe."
+    },
+    {
+      "question": "How do I get started with PhonePe for my business?",
+      "answer": "It's simple! For offline stores, download the PhonePe Business app and generate your free QR code instantly. For online businesses, visit business.phonepe.com and sign up for the Payment Gateway - integration takes just a few hours."
+    },
+    {
+      "question": "Does PhonePe offer loans?",
+      "answer": "Yes! PhonePe offers consumer lending for personal needs and merchant lending for business growth. Loans feature quick approval, minimal documentation, and flexible repayment options."
+    },
+    {
+      "question": "What team size is ideal for PhonePe business solutions?",
+      "answer": "PhonePe works for all business sizes - from solo entrepreneurs and small kirana shops to large enterprises. Our solutions scale with your business needs."
+    },
+    {
+      "question": "Can I invest through PhonePe?",
+      "answer": "Yes! PhonePe offers investments in mutual funds (liquid, tax-saving, equity, debt, hybrid), 24K gold (starting from ₹5), recurring deposits, and NPS contributions. Zero commission on direct mutual funds."
+    },
+    {
+      "question": "What is UPI Lite?",
+      "answer": "UPI Lite enables faster, low-value transactions (up to ₹500) without entering UPI PIN. It's perfect for quick daily payments like tea, snacks, auto rides, etc."
+    },
+    {
+      "question": "How do I contact PhonePe support?",
+      "answer": "You can reach PhonePe support through: 1) In-app Help Center, 2) Website: phonepe.com/contact-us, 3) 24/7 customer support via the app. We also have dedicated business support for merchants."
+    },
+    {
+      "question": "What industries does PhonePe serve?",
+      "answer": "PhonePe serves all industries including: retail, e-commerce, food & beverage, healthcare, education, travel, utilities, financial services, entertainment, and more. If you accept payments, PhonePe works for you!"
+    }
+  ],
+  "use_cases": [
+    {
+      "persona": "E-commerce Business Owner",
+      "pain_points": ["High payment gateway fees", "Complex integration", "Slow settlements"],
+      "solution": "PhonePe Payment Gateway with 0% fees, easy integration, and instant settlements"
+    },
+    {
+      "persona": "Retail Store Owner",
+      "pain_points": ["Managing cash", "Tracking payments manually", "Missing payment notifications"],
+      "solution": "PhonePe QR + SmartSpeaker for instant notifications, digital tracking, and cashless payments"
+    },
+    {
+      "persona": "Startup Founder",
+      "pain_points": ["Limited budget", "Need quick setup", "Want multiple payment options"],
+      "solution": "Free Payment Gateway, zero setup cost, supports all payment methods"
+    },
+    {
+      "persona": "Restaurant Owner",
+      "pain_points": ["Busy during peak hours", "Can't check phone constantly", "Need quick payment confirmation"],
+      "solution": "SmartSpeaker announces payments with voice alerts, hands-free operation"
+    },
+    {
+      "persona": "Kirana Shop Owner",
+      "pain_points": ["Small transactions", "Many customers", "Limited tech knowledge"],
+      "solution": "Simple QR code, easy to use, works with all UPI apps, no smartphone needed for customers"
+    }
+  ],
+  "competitive_advantages": [
+    "0% transaction fees on Payment Gateway (competitors charge 1.5-2%)",
+    "61+ crore user base - largest in India",
+    "Accepted at 4.4+ crore merchants",
+    "Covers 98% of India's postal codes",
+    "One-stop solution for payments, investments, insurance, and lending",
+    "Bank-grade security with PCI-DSS and ISO certification",
+    "24/7 customer support",
+    "Instant settlements for online payments",
+    "Free QR codes for offline merchants",
+    "Easy integration with detailed documentation"
+  ]
+}
