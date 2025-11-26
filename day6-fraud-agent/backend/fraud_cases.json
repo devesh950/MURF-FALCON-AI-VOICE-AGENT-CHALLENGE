@@ -1,0 +1,49 @@
+[
+  {
+    "userName": "John Smith",
+    "securityIdentifier": "12345",
+    "securityQuestion": "What is your favorite color?",
+    "securityAnswer": "blue",
+    "cardEnding": "4242",
+    "status": "confirmed_safe",
+    "transactionAmount": "$1,299.99",
+    "transactionName": "Luxury Electronics Store",
+    "transactionTime": "2025-11-25 23:45:00",
+    "transactionCategory": "e-commerce",
+    "transactionSource": "luxuryelectronics.com",
+    "transactionLocation": "Shanghai, China",
+    "outcome": "Customer confirmed the transaction.",
+    "updatedAt": "2025-11-26T22:33:11.146817"
+  },
+  {
+    "userName": "Sarah Johnson",
+    "securityIdentifier": "67890",
+    "securityQuestion": "What is your pet's name?",
+    "securityAnswer": "max",
+    "cardEnding": "8888",
+    "status": "confirmed_safe",
+    "transactionAmount": "$549.00",
+    "transactionName": "International Wire Transfer",
+    "transactionTime": "2025-11-26 02:15:00",
+    "transactionCategory": "wire transfer",
+    "transactionSource": "Global Money Transfer Inc",
+    "transactionLocation": "Lagos, Nigeria",
+    "outcome": "Customer confirmed the transaction.",
+    "updatedAt": "2025-11-26T22:51:16.863485"
+  },
+  {
+    "userName": "Michael Chen",
+    "securityIdentifier": "54321",
+    "securityQuestion": "What is your first pet's name?",
+    "securityAnswer": "fluffy",
+    "cardEnding": "1234",
+    "status": "pending_review",
+    "transactionAmount": "$2,450.50",
+    "transactionName": "Premium Fashion Outlet",
+    "transactionTime": "2025-11-25 18:30:00",
+    "transactionCategory": "retail",
+    "transactionSource": "fashionoutlet.eu",
+    "transactionLocation": "Milan, Italy",
+    "outcome": null
+  }
+]
