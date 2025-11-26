@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": "2025-11-26T09:16:53.244040",
+    "name": null,
+    "company": null,
+    "email": null,
+    "role": null,
+    "use_case": "e-commerce payment gateway",
+    "team_size": null,
+    "timeline": null
+  },
+  {
+    "timestamp": "2025-11-26T09:23:56.832493",
+    "name": "Deves",
+    "company": null,
+    "email": null,
+    "role": null,
+    "use_case": "e-commerce clothing business",
+    "team_size": null,
+    "timeline": null
+  }
+]
