@@ -36,13 +36,15 @@ class LearnAgent(Agent):
     def __init__(self) -> None:
         content_str = json.dumps(TUTOR_CONTENT, indent=2)
         super().__init__(
-            instructions=f"""You are Matthew, a friendly Python tutor in LEARN mode.
+            instructions="""SPEED OPTIMIZATION: Keep ALL responses under 5 seconds. Use 1 sentence max. Be direct and fast.
 
-Available concepts: {content_str}
+You are Matthew, a friendly Python tutor in LEARN mode.
 
-Explain concepts clearly with examples. Keep explanations under 1 minute.
+Available concepts: """ + json.dumps(TUTOR_CONTENT, indent=2) + """
+
+Explain concepts with 1 example. Keep under 10 seconds.
 If user wants quiz or teach mode, use the transfer tools.""",
-            tts=murf.TTS(voice="en-US-matthew")
+            tts=murf.TTS(model="falcon", voice="en-US-matthew")
         )
     
     @function_tool()
@@ -61,13 +63,15 @@ class QuizAgent(Agent):
     def __init__(self) -> None:
         content_str = json.dumps(TUTOR_CONTENT, indent=2)
         super().__init__(
-            instructions=f"""You are Alicia, an enthusiastic quiz host in QUIZ mode.
+            instructions="""SPEED OPTIMIZATION: Keep ALL responses under 5 seconds. Use 1 sentence max. Be direct and fast.
 
-Available concepts: {content_str}
+You are Alicia, an enthusiastic quiz host in QUIZ mode.
 
-Ask questions and give immediate feedback. Keep it fun and encouraging!
+Available concepts: """ + json.dumps(TUTOR_CONTENT, indent=2) + """
+
+Ask 1 question, give immediate feedback. Keep under 10 seconds.
 If user wants learn or teach mode, use the transfer tools.""",
-            tts=murf.TTS(voice="en-US-alicia")
+            tts=murf.TTS(model="falcon", voice="en-US-alicia")
         )
     
     @function_tool()
@@ -86,13 +90,15 @@ class TeachBackAgent(Agent):
     def __init__(self) -> None:
         content_str = json.dumps(TUTOR_CONTENT, indent=2)
         super().__init__(
-            instructions=f"""You are Ken, a patient mentor in TEACH BACK mode.
+            instructions="""SPEED OPTIMIZATION: Keep ALL responses under 5 seconds. Use 1 sentence max. Be direct and fast.
 
-Available concepts: {content_str}
+You are Ken, a patient mentor in TEACH BACK mode.
 
-Ask user to explain concepts and give constructive feedback.
+Available concepts: """ + json.dumps(TUTOR_CONTENT, indent=2) + """
+
+Ask user to explain 1 concept, give quick feedback. Keep under 10 seconds.
 If user wants learn or quiz mode, use the transfer tools.""",
-            tts=murf.TTS(voice="en-US-ken")
+            tts=murf.TTS(model="falcon", voice="en-US-ken")
         )
     
     @function_tool()
@@ -112,8 +118,8 @@ async def entrypoint(ctx: JobContext):
     # Start with Learn mode - Matthew voice
     session = AgentSession(
         stt=deepgram.STT(model="nova-3"),
-        llm=google.llm.LLM(model="gemini-2.5-flash"),
-        tts=murf.TTS(voice="en-US-matthew"),
+        llm=google.LLM(model="gemini-1.5-flash", temperature=0.7),
+        tts=murf.TTS(model="falcon", voice="en-US-matthew"),
         vad=silero.VAD.load(),
     )
     
