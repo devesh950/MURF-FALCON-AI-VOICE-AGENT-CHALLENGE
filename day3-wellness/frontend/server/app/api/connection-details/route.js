@@ -1,0 +1,11 @@
+var R=require("../../../chunks/[turbopack]_runtime.js")("server/app/api/connection-details/route.js")
+R.c("server/chunks/[root-of-the-server]__e8868ef2._.js")
+R.c("server/chunks/eca83_next_8c5b59c5._.js")
+R.c("server/chunks/2a81c_@bufbuild_protobuf_dist_esm_a3ee8a86._.js")
+R.c("server/chunks/6f37b_@livekit_protocol_dist_index_mjs_3681f6a9._.js")
+R.c("server/chunks/90496_jose_dist_node_esm_25a249fc._.js")
+R.c("server/chunks/e4805_livekit-server-sdk_dist_2259f51f._.js")
+R.c("server/chunks/[root-of-the-server]__f4dc9f8a._.js")
+R.m("[project]/.next-internal/server/app/api/connection-details/route/actions.js [app-rsc] (server actions loader, ecmascript)")
+R.m("[project]/node_modules/.pnpm/next@15.5.2_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/connection-details/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/node_modules/.pnpm/next@15.5.2_react-dom@19.2.0_react@19.2.0__react@19.2.0/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/connection-details/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports

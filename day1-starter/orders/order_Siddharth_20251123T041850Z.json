@@ -1,0 +1,9 @@
+{
+  "size": "Grande",
+  "drinkType": "Cappuccino",
+  "milk": "Oat milk",
+  "extras": [
+    "Whipped cream"
+  ],
+  "name": "Siddharth"
+}
