@@ -15,8 +15,18 @@ from livekit.agents import (
     cli,
     function_tool,
 )
-from livekit.plugins import deepgram, murf, silero
-from livekit.plugins.google import llm
+# Optional plugin imports: guard heavy plugin modules so dev mode works
+try:
+    from livekit.plugins import deepgram, murf, silero
+except Exception as e:
+    logging.warning(
+        "Optional LiveKit plugins not available; running in DEV STUB mode: %s",
+        e,
+    )
+    deepgram = murf = silero = None
+# NOTE: Skip importing heavy Google plugin in dev/debug mode to avoid
+# long installs and import-time errors on machines without all deps.
+# from livekit.plugins.google import llm
 
 from catalog import search_items, get_item_by_id, get_recipe_items, get_catalog
 from orders import save_order, get_latest_order, get_order_history, search_orders_by_item, update_order_status
@@ -367,25 +377,19 @@ async def entrypoint(ctx: JobContext):
     logger.info(f"Agent joining room: {ctx.room.name}")
     logger.debug("Entrypoint started; connecting to LiveKit and preparing session")
     
+    # Connect the worker to LiveKit (subscribe to audio by default)
     await ctx.connect(auto_subscribe=AutoSubscribe.AUDIO_ONLY)
-    
-    # Create agent and start session with proper configuration
+
+    # Start a full AgentSession so the agent behaves like Day 6 example.
+    # This will initialize configured STT / TTS / LLM plugins when available.
     agent = GroceryOrderAgent()
-    session = AgentSession(
-        stt=deepgram.STT(model="nova-3"),
-        llm=google.LLM(model="gemini-1.5-flash", temperature=0.7),
-        tts=murf.TTS(voice="en-US-matthew"),
-        vad=silero.VAD.load(),
-    )
-    try:
-        await session.start(agent, room=ctx.room)
-        logger.info("Agent session started successfully")
-        # Keep the worker alive while the session runs (prevents immediate draining)
-        while True:
-            await asyncio.sleep(30)
-    except Exception as e:
-        logger.exception("Agent session failed with exception")
-        raise
+    session = AgentSession()
+    logger.info("Starting AgentSession for %s", agent.__class__.__name__)
+    await session.start(agent, room=ctx.room)
+
+    # Session.start returns when the session ends; log and return.
+    logger.info("AgentSession finished for room: %s", ctx.room.name)
+    return
 
 
 if __name__ == "__main__":

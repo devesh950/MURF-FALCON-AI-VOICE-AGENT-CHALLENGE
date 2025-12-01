@@ -1,0 +1,54 @@
+{
+  "scenarios": [
+    {
+      "id": 1,
+      "description": "You are a barista who has to tell a customer that their latte is actually a portal to another dimension.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 2,
+      "description": "You are a time-travelling tour guide explaining modern smartphones to someone from the 1800s.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "description": "You are a restaurant waiter who must calmly tell a customer that their order has escaped the kitchen.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 4,
+      "description": "You are a customer trying to return an obviously cursed object to a very skeptical shop owner.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "description": "You are a tech support person helping someone whose computer is possessed by a friendly ghost.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 6,
+      "description": "You are a real estate agent showing a house where gravity works differently in each room.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 7,
+      "description": "You are a therapist counseling a superhero who's afraid of their own superpowers.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "description": "You are a museum curator explaining why the paintings keep rearranging themselves at night.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "description": "You are a delivery driver explaining why the package is three years late.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "description": "You are a chef on a cooking show where all your ingredients are invisible.",
+      "difficulty": "hard"
+    }
+  ]
+}

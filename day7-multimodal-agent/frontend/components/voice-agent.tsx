@@ -34,7 +34,25 @@ export function VoiceAgent({ onCartUpdate }: VoiceAgentProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ room_config: { agents: [{ agent_name: "QuickMart Grocery Agent" }] } }),
       });
-      const data = await response.json();
+      // Defensive parsing: some responses could be empty or truncated.
+      const text = await response.text();
+      if (!response.ok) {
+        // include body text for easier debugging
+        throw new Error(`Server returned ${response.status}: ${text || "<empty>"}`);
+      }
+
+      let data = null as any;
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch (err) {
+        console.error("Failed to parse JSON from /api/connection-details:", err, text);
+        throw new Error("Invalid JSON response from server");
+      }
+
+      if (!data) {
+        throw new Error("Empty response from /api/connection-details");
+      }
+
       setConnectionDetails(data);
     } catch (error) {
       console.error("Failed to get connection details:", error);
