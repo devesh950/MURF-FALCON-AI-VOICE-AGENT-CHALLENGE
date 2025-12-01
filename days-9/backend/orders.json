@@ -1,0 +1,101 @@
+[
+  {
+    "id": "order-1",
+    "items": [
+      {
+        "product_id": "hoodie-001",
+        "name": "Classic Hoodie",
+        "quantity": 1,
+        "price": 1500
+      }
+    ],
+    "total": 1500,
+    "currency": 1500,
+    "created_at": "2025-11-29T21:51:38.217273"
+  },
+  {
+    "id": "order-1",
+    "items": [
+      {
+        "product_id": "hoodie-001",
+        "name": "Classic Hoodie",
+        "quantity": 1,
+        "price": 1500
+      }
+    ],
+    "total": 1500,
+    "currency": 1500,
+    "created_at": "2025-11-30T00:22:29.004050"
+  },
+  {
+    "id": "order-2",
+    "items": [
+      {
+        "product_id": "mug-001",
+        "name": "Stoneware Coffee Mug",
+        "quantity": 1,
+        "price": 800
+      }
+    ],
+    "total": 800,
+    "currency": 800,
+    "created_at": "2025-11-30T00:31:44.071724"
+  },
+  {
+    "id": "order-1",
+    "line_items": [
+      {
+        "product_id": "jeans-001",
+        "name": "Slim Fit Jeans",
+        "quantity": 1,
+        "unit_amount": 1200,
+        "currency": "INR"
+      }
+    ],
+    "total": 1200,
+    "currency": "INR",
+    "created_at": "2025-11-30T12:29:20.765328",
+    "status": "CONFIRMED",
+    "buyer": {
+      "name": "Demo User"
+    }
+  },
+  {
+    "id": "order-1",
+    "line_items": [
+      {
+        "product_id": "jeans-001",
+        "name": "Slim Fit Jeans",
+        "quantity": 1,
+        "unit_amount": 1200,
+        "currency": "INR"
+      }
+    ],
+    "total": 1200,
+    "currency": "INR",
+    "created_at": "2025-11-30T12:45:26.213731",
+    "status": "CONFIRMED",
+    "buyer": {
+      "name": "Demo User"
+    }
+  },
+  {
+    "id": "order-2",
+    "line_items": [
+      {
+        "product_id": "jeans-001",
+        "name": "Slim Fit Jeans",
+        "quantity": 1,
+        "unit_amount": 1200,
+        "currency": "INR"
+      }
+    ],
+    "total": 1200,
+    "currency": "INR",
+    "created_at": "2025-11-30T12:45:48.961208",
+    "status": "CONFIRMED",
+    "buyer": {
+      "name": "Demo User"
+    }
+  }
+]
